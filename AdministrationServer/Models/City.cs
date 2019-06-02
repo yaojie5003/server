@@ -1,11 +1,12 @@
-﻿using System;
+﻿using AdministrationServer.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace AdministrationServer.Models
 {
-    public class City
+    public class City: IEntity
     {
         public int ProvinceId { set; get; }
         public int Id { set; get; }

@@ -9,7 +9,8 @@ namespace AdministrationServer.Interface
 {
     interface IProvinceRepository :IInterfaceBaseRepository<Province>
     {
-        IEnumerable<Province> GetByName(string name);
-        IEnumerable<Province> GetByName(string name,int pageIndex, int pageSize);
+        Task<IEnumerable<Province>> GetByName(string name);
+        Task<IEnumerable<Province>> GetByName(string name,int pageIndex, int pageSize);
+       
     }
 }

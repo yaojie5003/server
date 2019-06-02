@@ -9,7 +9,7 @@ namespace AdministrationServer.Interface
 {
     interface ICountyRepository:IInterfaceBaseRepository<County>
     {
-        IEnumerable<County> GetByName(string name);
-        IEnumerable<County> GetByName(string name, int pageIndex, int pageSize);
+        Task<IEnumerable<County>> GetByName(string name);
+        Task<IEnumerable<County>> GetByName(string name, int pageIndex, int pageSize);
     }
 }
