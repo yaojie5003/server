@@ -28,24 +28,24 @@ namespace AdministrationServer.Controllers
             using (ServerDbContext _context = new ServerDbContext())
             {
                 List<City> cities;
-                IQueryable<City> result;
+                IEnumerable<City> result;
                 if (provinceId == 0)
                 {
                     if (string.IsNullOrEmpty(cityName))
                     {
                         result = _context.City.AsQueryable();
                     }
-                    else { result = _context.City.Where(a => a.Name.Contains(cityName)); }
+                    else { result = _context.Database.SqlQuery<City>("SELECT * FROM City WHERE Name LIKE '%"+cityName+"%'").AsEnumerable(); }
                 }
                 else
                 {
                     if (string.IsNullOrEmpty(cityName))
                     {
-                        result = _context.City.Where(a => a.Id==provinceId);
+                        result = _context.City.Where(a => a.ProvinceId == provinceId);
                     }
-                    else { result = _context.City.Where(a =>a.Id == provinceId&&a.Name.Contains(cityName)); }
+                    else { result = _context.City.Where(a =>a.ProvinceId == provinceId&&a.Name.Contains(cityName)); }
                 }
-                 cities = result.OrderBy(a => a.Code).Skip(pageSize*(pageIndex-1)).Take(pageSize).ToList();
+                 cities = result.OrderBy(a => a.Code).Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList();
                 return Json(cities);
             }
         }

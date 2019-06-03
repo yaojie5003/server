@@ -24,7 +24,7 @@ namespace AdministrationServer.Models
         /// </summary>
         public string Code { set; get; }
         /// <summary>
-        /// 获取或设置城市名缩写
+        /// 获取或设置城市名
         /// </summary>
         public string Name { set; get; }
         /// <summary>
