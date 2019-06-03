@@ -18,7 +18,7 @@ namespace AdministrationServer.Data
         {
             ConnectionString = new SQLiteConnectionStringBuilder()
             {
-                DataSource = @"D:\work\2019\AdministrationServer\AdministrationServer\App_Data\dt.db",
+                DataSource =AppDomain.CurrentDomain.BaseDirectory+ "App_Data\\dt.db",
                 ForeignKeys = true
             }.ConnectionString
         }, true)

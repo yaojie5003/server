@@ -5,6 +5,10 @@ using System.Web;
 
 namespace AdministrationServer.Infrastructure
 {
+    /// <summary>
+    /// 有主键的实体
+    /// </summary>
+    /// <typeparam name="TPrimaryKey">主键</typeparam>
     public interface IEntity<TPrimaryKey>
     {
         /// <summary>

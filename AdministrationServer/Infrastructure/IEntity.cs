@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AdministrationServer.Infrastructure
 {
+    /// <summary>
+    /// 实体接口
+    /// </summary>
     public interface IEntity:IEntity<int>
     {
     }

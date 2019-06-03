@@ -1,11 +1,5 @@
 ﻿using AdministrationServer.Data;
-using AdministrationServer.Interface;
-using AdministrationServer.Repository;
 using LightInject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 
 namespace AdministrationServer
@@ -19,9 +13,9 @@ namespace AdministrationServer
             container.EnableWebApi(configuration);
             container.Register<ServerDbContext>();
 
-            container.Register<IProvinceRepository, ProvinceRepository>();
-            container.Register<ICountyRepository, CountyRepository>();
-            container.Register<ICityRepository, CityRepository>();
+            //container.Register<IProvinceRepository, ProvinceRepository>();
+            //container.Register<ICountyRepository, CountyRepository>();
+            //container.Register<ICityRepository, CityRepository>();
         }
     }
 }

@@ -12,14 +12,21 @@ using System.Web.Http;
 
 namespace AdministrationServer.Controllers
 {
+    /// <summary>
+    /// 省份
+    /// </summary>
     public class ProvinceController : ApiController
     {
+        /// <summary>
+        /// 获取省份列表
+        /// </summary>
+        /// <returns>省份列表</returns>
         public async Task< IHttpActionResult> Get()
         {
             using (ServerDbContext _context = new ServerDbContext())
             {               
-                var ssd = _context.Province.ToList();
-                return Json(ssd);
+                var result = _context.Province.ToList();
+                return Json(result);
             }
         }
     }
