@@ -49,5 +49,7 @@ namespace AdministrationServer.Controllers
                 return Json(cities);
             }
         }
+        [HttpGet]
+        public IHttpActionResult Query(string provinceCode) { }
     }
 }
