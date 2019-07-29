@@ -1,11 +1,9 @@
-﻿using AdministrationServer.Infrastructure;
+﻿using AdministrationServer.Core.Infrastructure;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace AdministrationServer
+namespace AdministrationServer.Core
 {
     /// <summary>
     /// 仓储基础接口

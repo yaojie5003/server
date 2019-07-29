@@ -1,6 +1,6 @@
-﻿using AdministrationServer.Infrastructure;
+﻿using AdministrationServer.Core.Infrastructure;
 
-namespace AdministrationServer.Models
+namespace AdministrationServer.Core.Models
 {
     /// <summary>
     /// 省份

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace AdministrationServer.Infrastructure
+namespace AdministrationServer.Core.Infrastructure
 {
     /// <summary>
     /// 有主键的实体

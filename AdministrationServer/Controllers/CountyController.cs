@@ -1,10 +1,7 @@
-﻿using AdministrationServer.Data;
-using AdministrationServer.Models;
-using System;
+﻿using AdministrationServer.Core.Models;
+using AdministrationServer.Data;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace AdministrationServer.Controllers

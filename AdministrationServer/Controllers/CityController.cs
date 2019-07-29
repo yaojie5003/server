@@ -1,5 +1,5 @@
-﻿using AdministrationServer.Data;
-using AdministrationServer.Models;
+﻿using AdministrationServer.Core.Models;
+using AdministrationServer.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +50,6 @@ namespace AdministrationServer.Controllers
             }
         }
         [HttpGet]
-        public IHttpActionResult Query(string provinceCode) { }
+        public IHttpActionResult Query(string provinceCode) { return Json("ddd"); }
     }
 }

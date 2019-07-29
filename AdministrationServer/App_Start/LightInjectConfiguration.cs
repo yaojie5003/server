@@ -1,4 +1,5 @@
 ﻿using AdministrationServer.Data;
+using AdministrationServer.EntityFrameworkCore;
 using LightInject;
 using System.Web.Http;
 
@@ -12,7 +13,7 @@ namespace AdministrationServer
             container.RegisterApiControllers();           
             container.EnableWebApi(configuration);
             container.Register<ServerDbContext>();
-
+            container.Register<ADMDbcontext>();
             //container.Register<IProvinceRepository, ProvinceRepository>();
             //container.Register<ICountyRepository, CountyRepository>();
             //container.Register<ICityRepository, CityRepository>();

@@ -1,14 +1,8 @@
-﻿using AdministrationServer.Data;
-using AdministrationServer.Models;
+﻿using AdministrationServer.Core.Models;
+using AdministrationServer.Data;
 using Swashbuckle.Swagger.Annotations;
-using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Mapping;
-using System.Data.Entity.Core.Metadata.Edm;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 

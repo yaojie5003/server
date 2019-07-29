@@ -1,11 +1,9 @@
-﻿using AdministrationServer.Models;
-using System;
+﻿using AdministrationServer.Core;
+using AdministrationServer.Core.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace AdministrationServer.Interface
+namespace AdministrationServer.EntityFrameworkCore
 {
     interface ICountyRepository:IInterfaceBaseRepository<County>
     {

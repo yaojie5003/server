@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdministrationServer.Infrastructure
+namespace AdministrationServer.Core.Infrastructure
 {
     /// <summary>
     /// 实体接口

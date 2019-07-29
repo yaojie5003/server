@@ -1,14 +1,11 @@
-﻿using AdministrationServer.Interface;
-using AdministrationServer.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
+using AdministrationServer.Core.Models;
 
-namespace AdministrationServer.Repository
+namespace AdministrationServer.EntityFrameworkCore
 {
-    public class CountyRepository : ICountyRepository
+    public class CityRepository : ICityRepository
     {
         public async Task<bool> DeleteById(int id)
         {
@@ -20,27 +17,27 @@ namespace AdministrationServer.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<County>> Get()
+        public async Task<IEnumerable<City>> Get()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<County>> Get(int pageIndex, int pageSize)
+        public async Task<IEnumerable<City>> Get(int pageIndex, int pageSize)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<County> GetById(int id)
+        public async Task<City> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<County>> GetByName(string name)
+        public async Task<IEnumerable<City>> GetByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<County>> GetByName(string name, int pageIndex, int pageSize)
+        public async Task<IEnumerable<City>> GetByName(string name, int pageIndex, int pageSize)
         {
             throw new NotImplementedException();
         }
@@ -50,7 +47,7 @@ namespace AdministrationServer.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<bool> Update(County t)
+        public async Task<bool> Update(City t)
         {
             throw new NotImplementedException();
         }

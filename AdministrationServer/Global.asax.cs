@@ -14,7 +14,7 @@ namespace AdministrationServer
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             LightInjectConfiguration.Register(GlobalConfiguration.Configuration);
-           
+            
         }
     }
 }
