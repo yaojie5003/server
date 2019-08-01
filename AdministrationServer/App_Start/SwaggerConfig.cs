@@ -2,6 +2,8 @@ using System.Web.Http;
 using WebActivatorEx;
 using AdministrationServer;
 using Swashbuckle.Application;
+using System.Xml.Linq;
+using System.Xml.XPath;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
@@ -61,7 +63,7 @@ namespace AdministrationServer
                         //c.BasicAuth("basic")
                         //    .Description("Basic HTTP Authentication");
                         //
-						// NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
+                        // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
                         //c.ApiKey("apiKey")
                         //    .Description("API Key Authentication")
                         //    .Name("apiKey")
@@ -95,7 +97,13 @@ namespace AdministrationServer
                         // used to customize the order of groupings in the swagger-ui.
                         //
                         //c.OrderActionGroupsBy(new DescendingAlphabeticComparer());
-
+                        c.GroupActionsBy(apiDesc =>
+                        {
+                            var controllerName = apiDesc.ActionDescriptor.ControllerDescriptor.ControllerName;
+                            var controllerType = apiDesc.ActionDescriptor.ControllerDescriptor.ControllerType.ToString();
+                            var member = XDocument.Load(GetXmlCommentsPath()).Root?.XPathSelectElement($"/doc/members/member[@name=\"T:{controllerType}\"]");
+                            return $"{controllerName} : {member?.XPathSelectElement("summary")?.Value}";
+                        });
                         // If you annotate Controllers and API Types with
                         // Xml comments (http://msdn.microsoft.com/en-us/library/b2s063f7(v=vs.110).aspx), you can incorporate
                         // those comments into the generated docs and UI. You can enable this by providing the path to one or

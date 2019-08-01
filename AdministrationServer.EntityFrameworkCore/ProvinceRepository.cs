@@ -4,10 +4,10 @@ using System.Linq;
 
 namespace AdministrationServer.EntityFrameworkCore
 {
-    public class ProvinceRepository : BaseRepository<Province>, IProvinceRepository
+    public class ProvinceRepository<TContext> : BaseRepository<Province>, IProvinceRepository where TContext : AdministrationDbcontext
     {
-        private readonly AdministrationDbcontext _context;
-        public ProvinceRepository(AdministrationDbcontext context):base(context)
+        private readonly TContext _context;
+        public ProvinceRepository(TContext context):base(context)
         {
             _context = context;
         }

@@ -1,4 +1,5 @@
-﻿using AdministrationServer.Data;
+﻿using AdministrationServer.Controllers;
+using AdministrationServer.Data;
 using AdministrationServer.EntityFrameworkCore;
 using LightInject;
 using System.Web.Http;
@@ -7,19 +8,19 @@ namespace AdministrationServer
 {
     public static class LightInjectConfiguration
     {
+        private static readonly ServiceContainer _container = new ServiceContainer();
         public static void Register(HttpConfiguration configuration)
         {
-            var container = new ServiceContainer();
-            container.RegisterApiControllers();
-            container.EnableWebApi(configuration);
-            container.Register<ServerDbContext>();
-            container.Register<ADMDbcontext>();
-            container.Register<ICityRepository, CityRepository>();
-            container.Register<IProvinceRepository, ProvinceRepository>();
-            container.Register<ICountyRepository, CountyRepository>();
-            //container.Register<IProvinceRepository, ProvinceRepository>();
-            //container.Register<ICountyRepository, CountyRepository>();
-            //container.Register<ICityRepository, CityRepository>();
+            //_container = new ServiceContainer();
+            _container.RegisterApiControllers();
+            _container.EnableWebApi(configuration);
+            //_container.EnablePerWebRequestScope();
+            _container.Register<ServerDbContext>();
+            _container.Register<ADMDbcontext>();
+            _container.Register<ICityRepository, CityRepository<ADMDbcontext>>();
+            _container.Register<IProvinceRepository, ProvinceRepository<ADMDbcontext>>();
+            _container.Register<ICountyRepository, CountyRepository<ADMDbcontext>>();
+
         }
     }
 }
