@@ -14,22 +14,26 @@ namespace AdministrationServer.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
             builder.Entity<Province>(b => {
                 b.HasKey(rc => rc.Id);
                 b.ToTable("Province");
+                b.HasMany<City>().WithOne().HasForeignKey(ur => ur.ProvinceId).IsRequired();
+                b.HasMany<County>().WithOne().HasForeignKey(ur => ur.ProvinceId).IsRequired();
             });
+           
             builder.Entity<City>(b =>
             {
                 b.HasKey(rc => rc.Id);
                 b.ToTable("City");
-                b.HasMany<Province>().WithOne().HasForeignKey(ur => ur.Id).IsRequired();
+                b.HasMany<County>().WithOne().HasForeignKey(ur => ur.CityId).IsRequired();
             });
-            builder.Entity<County>(b=> {
+
+            builder.Entity<County>(b => {
                 b.HasKey(rc => rc.Id);
-                b.ToTable("County");
-                b.HasMany<City>().WithOne().HasForeignKey(ur => ur.Id).IsRequired();
+                b.ToTable("County");               
             });
-           
+          
         }
     }
 }

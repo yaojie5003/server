@@ -1,10 +1,8 @@
 ﻿using AdministrationServer.Core.Models;
 using AdministrationServer.Data;
-using System;
+using AdministrationServer.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace AdministrationServer.Controllers
@@ -14,6 +12,8 @@ namespace AdministrationServer.Controllers
     /// </summary>
     public class CityController : ApiController
     {
+
+        public CityController() {; }
         /// <summary>
         /// 城市查询
         /// </summary>
@@ -23,7 +23,7 @@ namespace AdministrationServer.Controllers
         /// <param name="pageSize">每页数据量</param>
         /// <returns>城市列表</returns>
         [HttpGet]
-        public IHttpActionResult Query(int provinceId=0,string cityName="",int pageIndex=1,int pageSize=10)
+        public IHttpActionResult Query(int provinceId = 0, string cityName = "", int pageIndex = 1, int pageSize = 10)
         {
             using (ServerDbContext _context = new ServerDbContext())
             {
@@ -35,7 +35,7 @@ namespace AdministrationServer.Controllers
                     {
                         result = _context.City.AsQueryable();
                     }
-                    else { result = _context.Database.SqlQuery<City>("SELECT * FROM City WHERE Name LIKE '%"+cityName+"%'").AsEnumerable(); }
+                    else { result = _context.Database.SqlQuery<City>("SELECT * FROM City WHERE Name LIKE '%" + cityName + "%'").AsEnumerable(); }
                 }
                 else
                 {
@@ -43,13 +43,25 @@ namespace AdministrationServer.Controllers
                     {
                         result = _context.City.Where(a => a.ProvinceId == provinceId);
                     }
-                    else { result = _context.City.Where(a =>a.ProvinceId == provinceId&&a.Name.Contains(cityName)); }
+                    else { result = _context.City.Where(a => a.ProvinceId == provinceId && a.Name.Contains(cityName)); }
                 }
-                 cities = result.OrderBy(a => a.Code).Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList();
+                cities = result.OrderBy(a => a.Code).Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList();
                 return Json(cities);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="provinceId"></param>
+        /// <returns></returns>
         [HttpGet]
-        public IHttpActionResult Query(string provinceCode) { return Json("ddd"); }
+        public IHttpActionResult QueryByProvince(int provinceId)
+        {
+            using (ADMDbcontext context = new ADMDbcontext()) {
+                ICityRepository cityRepository = new CityRepository(context);
+                return Json(cityRepository.GetCityByProvience(provinceId).ToList());
+            }
+          
+        }
     }
 }

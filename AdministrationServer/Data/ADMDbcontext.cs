@@ -7,9 +7,10 @@ namespace AdministrationServer.Data
 {
     public class ADMDbcontext: AdministrationDbcontext
     {
+        public ADMDbcontext():base ( ) { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite( "dt2.db");
+            optionsBuilder.UseSqlite(@"Data Source=.\dt2.db");
         }
     }
 }

@@ -236,9 +236,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190729094634_InitialCreate.cs" />
-    <Compile Include="Migrations\20190729094634_InitialCreate.designer.cs">
-      <DependentUpon>20190729094634_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\20190730033934_InitialCreate.cs" />
+    <Compile Include="Migrations\20190730033934_InitialCreate.designer.cs">
+      <DependentUpon>20190730033934_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ADMDbcontextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

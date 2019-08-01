@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdministrationServer.Migrations
 {
     [DbContext(typeof(ADMDbcontext))]
-    [Migration("20190729094634_InitialCreate")]
+    [Migration("20190730033934_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,7 +19,8 @@ namespace AdministrationServer.Migrations
 
             modelBuilder.Entity("AdministrationServer.Core.Models.City", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Abbreviation");
 
@@ -30,6 +31,8 @@ namespace AdministrationServer.Migrations
                     b.Property<int>("ProvinceId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProvinceId");
 
                     b.ToTable("City");
                 });
@@ -51,12 +54,17 @@ namespace AdministrationServer.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("ProvinceId");
+
                     b.ToTable("County");
                 });
 
             modelBuilder.Entity("AdministrationServer.Core.Models.Province", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Abbreviation");
 
@@ -71,17 +79,22 @@ namespace AdministrationServer.Migrations
 
             modelBuilder.Entity("AdministrationServer.Core.Models.City", b =>
                 {
-                    b.HasOne("AdministrationServer.Core.Models.County")
+                    b.HasOne("AdministrationServer.Core.Models.Province")
                         .WithMany()
-                        .HasForeignKey("Id")
+                        .HasForeignKey("ProvinceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("AdministrationServer.Core.Models.Province", b =>
+            modelBuilder.Entity("AdministrationServer.Core.Models.County", b =>
                 {
                     b.HasOne("AdministrationServer.Core.Models.City")
                         .WithMany()
-                        .HasForeignKey("Id")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AdministrationServer.Core.Models.Province")
+                        .WithMany()
+                        .HasForeignKey("ProvinceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

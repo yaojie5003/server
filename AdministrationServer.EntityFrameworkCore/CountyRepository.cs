@@ -1,55 +1,14 @@
 ﻿using AdministrationServer.Core.Models;
-using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
 
 namespace AdministrationServer.EntityFrameworkCore
 {
-    public class CountyRepository : ICountyRepository
+    public class CountyRepository : BaseRepository<County>, ICountyRepository
     {
-        public async Task<bool> DeleteById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public CountyRepository(AdministrationDbcontext dbcontext) : base(dbcontext) { }
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<County>> Get()
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<County>> Get(int pageIndex, int pageSize)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<County> GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<County>> GetByName(string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<County>> GetByName(string name, int pageIndex, int pageSize)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task SaveChange()
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<bool> Update(County t)
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<County> GetCountyByCityId(int cityId) => _entity.Where(a => a.CityId == cityId);
+        
     }
 }

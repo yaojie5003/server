@@ -1,4 +1,5 @@
 ﻿using AdministrationServer.Core.Infrastructure;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AdministrationServer.Core.Models
 {
@@ -10,10 +11,12 @@ namespace AdministrationServer.Core.Models
         /// <summary>
         /// 获取或设置省份id
         /// </summary>
+        [ForeignKey("Province")]
         public int ProvinceId { set; get; }
         /// <summary>
         /// 获取或设置城市id
         /// </summary>
+        [ForeignKey("City")]
         public int CityId { set; get; }
         /// <summary>
         /// 获取或设置主键

@@ -3,51 +3,67 @@ using AdministrationServer.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AdministrationServer.EntityFrameworkCore
 {
-    public class BaseRepository<T> : IInterfaceBaseRepository<T> where T : class ,IEntity
+    public abstract class BaseRepository<T> : IInterfaceBaseRepository<T>,IQueryRepository<T> where T : class ,IEntity
     {
         private DbContext _context;
-        public BaseRepository()
+        public BaseRepository(DbContext context)
         {
-            //_context = new ServerDbContext();
-           // _data= context.Set<T>();
-        }
-        public Task<bool> DeleteById(int id)
-        {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public void Dispose()
+        protected internal DbSet<T> _entity { get { return _context.Set<T>(); } }
+    
+        public async Task DeleteById(int id)
         {
-            throw new NotImplementedException();
+            ThrowIfDisposed();
+            var entity  = await _entity.FirstAsync(a => a.Id == id);
+            if (entity is null ) { throw new ArgumentNullException(nameof(entity)); }
+            _entity.Remove(entity);
+        }
+        private bool _disposed;
+        /// <summary>
+        /// Throws if this class has been disposed.
+        /// </summary>
+        protected void ThrowIfDisposed()
+        {
+            if (_disposed)
+            {
+                throw new ObjectDisposedException(GetType().Name);
+            }
         }
 
-        public Task<IEnumerable<T>> Get()
+        public void Dispose() => _disposed = true;
+
+
+        public async Task<IEnumerable<T>> Get(int pageIndex, int pageSize)
         {
-            throw new NotImplementedException();
+            ThrowIfDisposed();
+            return await _entity.Skip(pageIndex * pageSize).Take(pageSize).ToListAsync();
         }
 
-        public Task<IEnumerable<T>> Get(int pageIndex, int pageSize)
+        public async Task<T> GetById(int id)
         {
-            throw new NotImplementedException();
+            ThrowIfDisposed();
+            return await _entity.FirstOrDefaultAsync(a => a.Id == id);
         }
 
-        public Task<T> GetById(int id)
+        public async Task<int> SaveChange(CancellationToken cancellationToken = default(CancellationToken))
         {
-            throw new NotImplementedException();
+            ThrowIfDisposed();
+            cancellationToken.ThrowIfCancellationRequested();
+            return await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public Task SaveChange()
+        public async Task Update(T t)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> Update(T t)
-        {
-            throw new NotImplementedException();
+            ThrowIfDisposed();
+            _entity.Update(t);
         }
     }
 }
