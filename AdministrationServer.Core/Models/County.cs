@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AdministrationServer.Core.Models
 {
     /// <summary>
-    /// 区县（县级市）
+    /// 市辖区、县级市、县…
     /// </summary>
     public class County:IEntity
     {

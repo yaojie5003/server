@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 
 namespace AdministrationServer.Core
 {
+    /// <summary>
+    /// 实体查询接口
+    /// </summary>
+    /// <typeparam name="TEntity">实体</typeparam>
     public interface IQueryRepository<TEntity> : IDisposable where TEntity : IEntity
     {
 
@@ -22,6 +26,5 @@ namespace AdministrationServer.Core
         /// <param name="pageSize">每页数量</param>
         /// <returns>返回的实体</returns>
         Task<IEnumerable<TEntity>> Get(int pageIndex, int pageSize);
-
     }
 }

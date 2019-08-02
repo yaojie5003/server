@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AdministrationServer.Core.Models
 {
     /// <summary>
-    /// 城市（地级市）
+    /// 地级市、地区、自治州、盟
     /// </summary>
     public class City: IEntity
     {

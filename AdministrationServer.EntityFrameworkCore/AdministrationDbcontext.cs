@@ -3,14 +3,37 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdministrationServer.EntityFrameworkCore
 {
+    /// <summary>
+    /// 行政区划上下文
+    /// </summary>
     public class AdministrationDbcontext : DbContext
     {
+        /// <summary>
+        /// 初始化
+        /// </summary>
         public AdministrationDbcontext() : base() { }
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="options">数据上下文参数</param>
         public AdministrationDbcontext(DbContextOptions options) : base(options)
         { }
+        /// <summary>
+        /// 获取或设置地级市、地区、自治州、盟实体
+        /// </summary>
         public DbSet<City> cities { set; get; }
+        /// <summary>
+        /// 获取或设置市辖区、县级市、县…
+        /// </summary>
         public DbSet<County> counties { set; get; }
+        /// <summary>
+        /// 获取或设置省、自治区、直辖市
+        /// </summary>
         public DbSet<Province> provinces { set; get; }
+        /// <summary>
+        /// 实体创建方法
+        /// </summary>
+        /// <param name="builder">构建参数</param>
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

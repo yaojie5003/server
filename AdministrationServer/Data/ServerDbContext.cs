@@ -4,16 +4,20 @@ using System;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Data.SQLite;
+using System.IO;
 
 namespace AdministrationServer.Data
 {
+    /// <summary>
+    /// ef6的数据上下文（已抛弃）
+    /// </summary>
     public class ServerDbContext:DbContext
     {
         public ServerDbContext():base (new SQLiteConnection()
         {
             ConnectionString = new SQLiteConnectionStringBuilder()
             {
-                DataSource =AppDomain.CurrentDomain.BaseDirectory+ "App_Data\\dt.db",
+                DataSource =Path.Combine( AppDomain.CurrentDomain.BaseDirectory, "App_Data\\dt.db"),
                 ForeignKeys = true
             }.ConnectionString
         }, true)

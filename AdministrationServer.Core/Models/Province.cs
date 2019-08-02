@@ -3,7 +3,7 @@
 namespace AdministrationServer.Core.Models
 {
     /// <summary>
-    /// 省份
+    /// 省、自治区、直辖市
     /// </summary>
     public class Province: IEntity
     {
@@ -16,11 +16,11 @@ namespace AdministrationServer.Core.Models
         /// </summary>
         public string Code { set; get; }
         /// <summary>
-        /// 获取或设置省份名称
+        /// 获取或设置省、自治区、直辖市名称
         /// </summary>
         public string Name { set; get; }
         /// <summary>
-        /// 获取或设置省份名缩写
+        /// 获取或设置省、自治区、直辖市名缩写
         /// </summary>
         public string Abbreviation { set; get; }
     }

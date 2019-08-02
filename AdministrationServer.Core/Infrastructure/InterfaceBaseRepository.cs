@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 namespace AdministrationServer.Core
 {
     /// <summary>
-    /// 仓储基础接口
+    /// 基于仓储基础接口
     /// </summary>
     /// <typeparam name="TEntity">实体</typeparam>
-    public  interface IInterfaceBaseRepository<TEntity>: IDisposable where TEntity : IEntity
+    public interface IInterfaceBaseRepository<TEntity>: IDisposable where TEntity : IEntity
     {
         /// <summary>
         /// 更新实体
@@ -32,7 +32,7 @@ namespace AdministrationServer.Core
         /// <summary>
         /// 保存更改
         /// </summary>
-        /// <returns></returns>
+        /// <returns>影响条数</returns>
         Task<int> SaveChange(CancellationToken cancellationToken);
     }
 }
