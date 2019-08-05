@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
 using System;
-using System.IO;
 
 namespace AdministrationServer.Data
 {
@@ -11,14 +10,18 @@ namespace AdministrationServer.Data
     /// </summary>
     public class ADMDbcontext: AdministrationDbcontext
     {
+
+        public ADMDbcontext():base() { }
+        public ADMDbcontext(DbContextOptions options) : base(options)
+        { }
+
         /// <summary>
         /// 上下文配置
         /// </summary>
         /// <param name="optionsBuilder">数据上下文配置构建</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-           
-            optionsBuilder.UseSqlite($"Data Source={ Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data\\dt.db")}");
+            //optionsBuilder.UseSqlite(@"Data Source=.\App_Data\dt.db");
         }
     }
 }

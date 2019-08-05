@@ -31,7 +31,7 @@ namespace AdministrationServer.EntityFrameworkCore
         public City GetCityByCode(string code)
         {
             if (string.IsNullOrEmpty(code)) { throw new System.ArgumentNullException("行政区代码不能为空！"); }
-            if (System.Text.RegularExpressions.Regex.IsMatch(code, "^[0-9]+$")) { throw new System.ArgumentException("行政区代码只能包含数字！"); }
+            if (!System.Text.RegularExpressions.Regex.IsMatch(code, "^[0-9]+$")) { throw new System.ArgumentException("行政区代码只能包含数字！"); }
             if (code.Length<4) { throw new System.ArgumentException("行政区代码有误！"); }
             ThrowIfDisposed();
             code = $"{code.Substring(0, 4)}00";
