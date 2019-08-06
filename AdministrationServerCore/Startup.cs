@@ -1,24 +1,24 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AdministrationServer.Data;
+using AdministrationServer.EntityFrameworkCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
 using System.Reflection;
-using Swashbuckle.AspNetCore.Swagger;
-using AdministrationServer.Data;
-using Microsoft.EntityFrameworkCore;
-using AdministrationServer.EntityFrameworkCore;
 
 namespace AdministrationServerCore
 {
     public class Startup
-    {
+    { 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ADMDbcontext>( a=>a.UseSqlite((@"Data Source=.\App_Data\dt.db")));
+            services.AddDbContext<ADMDbcontext>( a=>a.UseSqlite($"Data Source={ Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data/dt.db")}"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2); 
             services.AddSwaggerGen(c =>
             {
@@ -29,8 +29,8 @@ namespace AdministrationServerCore
             });
             services.AddTransient<IProvinceRepository, ProvinceRepository<ADMDbcontext>>();
             services.AddTransient<ICityRepository, CityRepository<ADMDbcontext>>();
-            services.AddTransient<ICountyRepository, CountyRepository<ADMDbcontext>>();
-
+            services.AddTransient<ICountyRepository, CountyRepository<ADMDbcontext>>();   
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
