@@ -42,7 +42,8 @@ namespace AdministrationServer.EntityFrameworkCore
             ThrowIfDisposed();
 
             var city = _city.Where(a => a.Abbreviation.StartsWith(cityName));
-            if (city.Count() != 1) { return GetCountyByCityId(city.First().Id); }
+            var ddf = city.Count();
+            if (city.Count() == 1) { return GetCountyByCityId(city.First().Id); }
             throw new System.Exception("输入城市有误！");
         }
 
@@ -54,7 +55,7 @@ namespace AdministrationServer.EntityFrameworkCore
         public County GetCountyByCode(string code)
         {
             if (string.IsNullOrEmpty(code)) { throw new System.ArgumentNullException("行政区代码不能为空！"); }
-            if (System.Text.RegularExpressions.Regex.IsMatch(code, "^[0-9]+$")) { throw new ArgumentException("行政区代码只能包含数字！"); }
+            if (!System.Text.RegularExpressions.Regex.IsMatch(code, "^[0-9]+$")) { throw new ArgumentException("行政区代码只能包含数字！"); }
             if (code.Length < 6) { throw new System.ArgumentException("行政区代码有误！"); }
             ThrowIfDisposed();
             code = $"{code.Substring(0, 6)}";
