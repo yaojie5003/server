@@ -17,11 +17,13 @@ namespace AdministrationServerCore.Controllers
     public class CountyController : ControllerBase
     {
         private readonly ICountyRepository _countyRepository;
+
         /// <summary>
         /// 市辖区、县级市、县
         /// </summary>
         /// <param name="countyRepository">市辖区、县级市、县接口</param>
         public CountyController(ICountyRepository countyRepository) { _countyRepository = countyRepository; }
+
         /// <summary>
         /// 分页市辖区、县级市、县查询
         /// </summary>
@@ -38,6 +40,7 @@ namespace AdministrationServerCore.Controllers
             if (pageSize < 1) { return BadRequest("每页条数不能小于1！"); }
             return Ok(_countyRepository.GetCountyPage(cityId, countyName, pageIndex, pageSize));
         }
+
         /// <summary>
         /// 根据地级市、地区、自治州、盟id查询市辖区、县级市、县
         /// </summary>
@@ -48,10 +51,11 @@ namespace AdministrationServerCore.Controllers
         {
             return Ok(_countyRepository.GetCountyByCityId(cityId));
         }
+
         /// <summary>
-        /// 根据市辖区、县级市、县代码获取信息
+        /// 根据行政区划代码获取市辖区、县级市、县信息
         /// </summary>
-        /// <param name="code">区县代码</param>
+        /// <param name="code">行政区划代码</param>
         /// <returns>市辖区、县级市、县</returns>
         [HttpGet, Route("queryByCode"), ProducesResponseType(  typeof(County), 200)]
         public IActionResult QueryByCode(string code)
@@ -59,6 +63,7 @@ namespace AdministrationServerCore.Controllers
             if (string.IsNullOrEmpty(code)) { return BadRequest("行政区划代码不能为空！"); }
             return Ok(_countyRepository.GetCountyByCode(code));
         }
+
         /// <summary>
         /// 根据地级市、地区、自治州、盟名称查询市辖区、县级市、县
         /// </summary>

@@ -17,11 +17,13 @@ namespace AdministrationServerCore.Controllers
     public class CityController : ControllerBase
     {
         private readonly ICityRepository _cityRepository;
+
         /// <summary>
         /// 地级市、地区、自治州、盟
         /// </summary>
         /// <param name="cityRepository">仓储接口</param>
         public CityController(ICityRepository cityRepository) { _cityRepository = cityRepository; }
+
         /// <summary>
         /// 地级市、地区、自治州、盟分页查询
         /// </summary>
@@ -38,6 +40,7 @@ namespace AdministrationServerCore.Controllers
             if (pageSize < 1) { return BadRequest("每页条数不能小于1！"); }
             return Ok(_cityRepository.GetCityPage(provinceId, cityName, pageIndex, pageSize));
         }
+
         /// <summary>
         /// 通过地级市、地区、自治州、盟id获取地级市、地区、自治州、盟
         /// </summary>
@@ -49,8 +52,9 @@ namespace AdministrationServerCore.Controllers
             var result = _cityRepository.GetCityByProvience(provinceId);
             return Ok(result);
         }
+
         /// <summary>
-        /// 地级市、地区、自治州、盟查询
+        /// 通过行政区划代码查询地级市、地区、自治州、盟信息
         /// </summary>
         /// <param name="code">行政区划代码</param>
         /// <returns>地级市、地区、自治州、盟</returns>
@@ -62,6 +66,7 @@ namespace AdministrationServerCore.Controllers
             if (result==null) { return NotFound(); }
             return Ok(result);
         }
+
         /// <summary>
         /// 通过地级市、地区、自治州、盟的名称获取地级市、地区、自治州、盟
         /// </summary>
@@ -72,6 +77,19 @@ namespace AdministrationServerCore.Controllers
         {
             if (string.IsNullOrEmpty(name)) { return BadRequest("地级市、地区、自治州、盟名称不能为空！"); }
             var result = _cityRepository.GetCityByName(name);
+            return Ok(result);
+        }
+
+        /// <summary>
+        ///  通过省、自治区、直辖市名称获取地级市、地区、自治州、盟
+        /// </summary>
+        /// <param name="provinceName">省、自治区、直辖市名称</param>
+        /// <returns>地级市、地区、自治州、盟列表</returns>
+        [HttpGet,Route("queryByProvinceName"),ProducesResponseType(typeof(List<City>), StatusCodes.Status200OK)]
+        public IActionResult QueryByProvinceName(string provinceName)
+        {
+            if (string.IsNullOrEmpty(provinceName)) { return BadRequest(""); }
+            var result = _cityRepository.GetCityByProvinceName(provinceName);
             return Ok(result);
         }
     }

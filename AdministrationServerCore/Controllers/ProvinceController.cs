@@ -15,19 +15,21 @@ namespace AdministrationServerCore.Controllers
     public class ProvinceController : ControllerBase
     {
        private readonly   IProvinceRepository _provinceRepository;
+
         /// <summary>
         /// 省、自治区、直辖市
         /// </summary>
         /// <param name="provinceRepository">省、自治区、直辖市接口</param>
         public ProvinceController(IProvinceRepository provinceRepository) { _provinceRepository = provinceRepository; }
+
         /// <summary>
-        /// 获取省份列表
+        /// 获取省、自治区、直辖市列表
         /// </summary>
         /// <returns>省份列表</returns>
         [HttpGet, Route("query"),ProducesResponseType(typeof(List<Province>), StatusCodes.Status200OK)]
         public  async Task<IActionResult> Get()
         {
-            var result =   _provinceRepository.GetList();
+            var result = await  _provinceRepository.GetList();
             return Ok(result);
         }
     }

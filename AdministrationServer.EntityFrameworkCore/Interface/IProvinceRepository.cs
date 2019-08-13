@@ -1,6 +1,7 @@
 ﻿using AdministrationServer.Core;
 using AdministrationServer.Core.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AdministrationServer.EntityFrameworkCore
 {
@@ -13,6 +14,6 @@ namespace AdministrationServer.EntityFrameworkCore
         /// 获取省、自治区、直辖市
         /// </summary>
         /// <returns>省、自治区、直辖市列表</returns>
-        IEnumerable<Province> GetList();
+        Task< IEnumerable<Province>> GetList();
     }
 }

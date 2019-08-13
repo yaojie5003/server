@@ -37,7 +37,7 @@ namespace AdministrationServer.EntityFrameworkCore
         /// <returns>地级市、地区、自治州、盟列表</returns>
         IEnumerable<City> GetCityPage(int provinceId,string name,int pageIndex,int pageSize);
         /// <summary>
-        /// 通过行政区划代码查询城市
+        /// 通过行政区划代码查询地级市、地区、自治州、盟
         /// </summary>
         /// <param name="code">地级市、地区、自治州、盟行政区划代码</param>
         /// <returns>地级市、地区、自治州、盟</returns>

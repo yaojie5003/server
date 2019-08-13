@@ -34,7 +34,7 @@
         </member>
         <member name="M:AdministrationServerCore.Controllers.CityController.QueryByCode(System.String)">
             <summary>
-            地级市、地区、自治州、盟查询
+            通过行政区划代码查询地级市、地区、自治州、盟信息
             </summary>
             <param name="code">行政区划代码</param>
             <returns>地级市、地区、自治州、盟</returns>
@@ -44,6 +44,13 @@
             通过地级市、地区、自治州、盟的名称获取地级市、地区、自治州、盟
             </summary>
             <param name="name">地级市、地区、自治州、盟的名称</param>
+            <returns>地级市、地区、自治州、盟列表</returns>
+        </member>
+        <member name="M:AdministrationServerCore.Controllers.CityController.QueryByProvinceName(System.String)">
+            <summary>
+             通过省、自治区、直辖市名称获取地级市、地区、自治州、盟
+            </summary>
+            <param name="provinceName">省、自治区、直辖市名称</param>
             <returns>地级市、地区、自治州、盟列表</returns>
         </member>
         <member name="T:AdministrationServerCore.Controllers.CountyController">
@@ -76,9 +83,9 @@
         </member>
         <member name="M:AdministrationServerCore.Controllers.CountyController.QueryByCode(System.String)">
             <summary>
-            根据市辖区、县级市、县代码获取信息
+            根据行政区划代码获取市辖区、县级市、县信息
             </summary>
-            <param name="code">区县代码</param>
+            <param name="code">行政区划代码</param>
             <returns>市辖区、县级市、县</returns>
         </member>
         <member name="M:AdministrationServerCore.Controllers.CountyController.QueryByCityName(System.String)">
@@ -101,7 +108,7 @@
         </member>
         <member name="M:AdministrationServerCore.Controllers.ProvinceController.Get">
             <summary>
-            获取省份列表
+            获取省、自治区、直辖市列表
             </summary>
             <returns>省份列表</returns>
         </member>

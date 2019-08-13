@@ -9,6 +9,7 @@ namespace AdministrationServer.Controllers
     /// <summary>
     /// 省、自治区、直辖市
     /// </summary>
+    [RoutePrefix("api/province")]
     public class ProvinceController : ApiController
     {
         private readonly IProvinceRepository _provinceRepository;
@@ -21,10 +22,10 @@ namespace AdministrationServer.Controllers
         /// 获取省份列表
         /// </summary>
         /// <returns>省份列表</returns>
-        [HttpGet, SwaggerResponse(200, "省、自治区、直辖市列表", typeof(List<Province>))]
-        public IHttpActionResult Get()
+        [HttpGet, Route("query"), SwaggerResponse(200, "省、自治区、直辖市列表", typeof(List<Province>))]
+        public async System.Threading.Tasks.Task<IHttpActionResult> GetAsync()
         {
-            var result = _provinceRepository.GetList();
+            var result =await _provinceRepository.GetList();
             return Json(result);
         }
     }
