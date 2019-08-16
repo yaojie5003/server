@@ -7,6 +7,21 @@ namespace AdministrationServer.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Express",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: true),
+                    Logo = table.Column<string>(nullable: true),
+                    Official = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Express", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Province",
                 columns: table => new
                 {
@@ -92,6 +107,9 @@ namespace AdministrationServer.Migrations
         {
             migrationBuilder.DropTable(
                 name: "County");
+
+            migrationBuilder.DropTable(
+                name: "Express");
 
             migrationBuilder.DropTable(
                 name: "City");

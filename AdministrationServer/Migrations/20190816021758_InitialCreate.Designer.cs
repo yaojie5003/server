@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdministrationServer.Migrations
 {
     [DbContext(typeof(ADMDbcontext))]
-    [Migration("20190730033934_InitialCreate")]
+    [Migration("20190816021758_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,6 +59,22 @@ namespace AdministrationServer.Migrations
                     b.HasIndex("ProvinceId");
 
                     b.ToTable("County");
+                });
+
+            modelBuilder.Entity("AdministrationServer.Core.Models.Express", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Logo");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Official");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Express");
                 });
 
             modelBuilder.Entity("AdministrationServer.Core.Models.Province", b =>

@@ -31,6 +31,10 @@ namespace AdministrationServer.EntityFrameworkCore
         /// </summary>
         public DbSet<Province> provinces { set; get; }
         /// <summary>
+        /// 获取或设置快递
+        /// </summary>
+        public DbSet<Express> expresses { set; get; }
+        /// <summary>
         /// 实体创建方法
         /// </summary>
         /// <param name="builder">构建参数</param>
@@ -56,7 +60,8 @@ namespace AdministrationServer.EntityFrameworkCore
                 b.HasKey(rc => rc.Id);
                 b.ToTable("County");               
             });
-          
+
+            builder.Entity<Express>(b=>b.ToTable("Express"));
         }
     }
 }

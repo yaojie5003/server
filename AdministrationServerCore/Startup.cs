@@ -29,8 +29,8 @@ namespace AdministrationServerCore
             });
             services.AddTransient<IProvinceRepository, ProvinceRepository<ADMDbcontext>>();
             services.AddTransient<ICityRepository, CityRepository<ADMDbcontext>>();
-            services.AddTransient<ICountyRepository, CountyRepository<ADMDbcontext>>();   
-            
+            services.AddTransient<ICountyRepository, CountyRepository<ADMDbcontext>>();
+            services.AddTransient<IExpressRepository, ExpressRepository<ADMDbcontext>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

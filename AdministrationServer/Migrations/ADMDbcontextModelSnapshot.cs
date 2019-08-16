@@ -59,6 +59,22 @@ namespace AdministrationServer.Migrations
                     b.ToTable("County");
                 });
 
+            modelBuilder.Entity("AdministrationServer.Core.Models.Express", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Logo");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Official");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Express");
+                });
+
             modelBuilder.Entity("AdministrationServer.Core.Models.Province", b =>
                 {
                     b.Property<int>("Id")

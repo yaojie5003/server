@@ -231,15 +231,16 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\CountyController.cs" />
+    <Compile Include="Controllers\ExpressController.cs" />
     <Compile Include="Controllers\ProvinceController.cs" />
     <Compile Include="Data\ADMDbcontext.cs" />
     <Compile Include="Data\ServerDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190730033934_InitialCreate.cs" />
-    <Compile Include="Migrations\20190730033934_InitialCreate.designer.cs">
-      <DependentUpon>20190730033934_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\20190816021758_InitialCreate.cs" />
+    <Compile Include="Migrations\20190816021758_InitialCreate.designer.cs">
+      <DependentUpon>20190816021758_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ADMDbcontextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

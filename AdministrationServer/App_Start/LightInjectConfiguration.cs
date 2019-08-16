@@ -26,6 +26,7 @@ namespace AdministrationServer
             _container.Register<ICityRepository, CityRepository<ADMDbcontext>>();
             _container.Register<IProvinceRepository, ProvinceRepository<ADMDbcontext>>();
             _container.Register<ICountyRepository, CountyRepository<ADMDbcontext>>();
+            _container.Register<IExpressRepository, ExpressRepository<ADMDbcontext>>();
 
         }
     }

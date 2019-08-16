@@ -95,6 +95,23 @@
             <param name="cityName">地级市、地区、自治州、盟名称</param>
             <returns>市辖区、县级市、县列表</returns>
         </member>
+        <member name="T:AdministrationServerCore.Controllers.ExpressController">
+            <summary>
+            快递
+            </summary>
+        </member>
+        <member name="M:AdministrationServerCore.Controllers.ExpressController.#ctor(AdministrationServer.EntityFrameworkCore.IExpressRepository)">
+            <summary>
+            初始化
+            </summary>
+            <param name="expressRepository"></param>
+        </member>
+        <member name="M:AdministrationServerCore.Controllers.ExpressController.Get">
+            <summary>
+            查询快递列表
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:AdministrationServerCore.Controllers.ProvinceController">
             <summary>
             省、自治区、直辖市
