@@ -17,7 +17,10 @@ namespace AdministrationServer.Controllers
         /// 省、自治区、直辖市
         /// </summary>
         /// <param name="repository">省、自治区、直辖市接口</param>
-        public ProvinceController(IProvinceRepository repository) { _provinceRepository = repository; }
+        public ProvinceController()
+        {
+            _provinceRepository = LightInjectConfiguration.Instance<IProvinceRepository>();
+        }
         /// <summary>
         /// 获取省份列表
         /// </summary>

@@ -17,11 +17,15 @@ namespace AdministrationServer.Controllers
     public class ExpressController : ApiController
     {
         private readonly IExpressRepository _express;
+
         /// <summary>
         /// 初始化
         /// </summary>
         /// <param name="expressRepository"></param>
-        public ExpressController(IExpressRepository expressRepository) { _express = expressRepository; }
+        public ExpressController()
+        {
+            _express = LightInjectConfiguration.Instance<IExpressRepository>();
+        }
         /// <summary>
         /// 查询列表
         /// </summary>

@@ -234,7 +234,6 @@
     <Compile Include="Controllers\ExpressController.cs" />
     <Compile Include="Controllers\ProvinceController.cs" />
     <Compile Include="Data\ADMDbcontext.cs" />
-    <Compile Include="Data\ServerDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

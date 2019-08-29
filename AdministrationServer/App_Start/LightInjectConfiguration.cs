@@ -19,15 +19,27 @@ namespace AdministrationServer
         {
             //_container = new ServiceContainer();
             _container.RegisterApiControllers();
-            _container.EnableWebApi(configuration);
+           
+            
             //_container.EnablePerWebRequestScope();
-           // _container.Register<ServerDbContext>();
+            // _container.Register<ServerDbContext>();
             _container.Register<ADMDbcontext>();
             _container.Register<ICityRepository, CityRepository<ADMDbcontext>>();
             _container.Register<IProvinceRepository, ProvinceRepository<ADMDbcontext>>();
             _container.Register<ICountyRepository, CountyRepository<ADMDbcontext>>();
             _container.Register<IExpressRepository, ExpressRepository<ADMDbcontext>>();
+            //_container.EnablePerWebRequestScope();
+            _container.EnableWebApi(configuration);
 
+        }
+        /// <summary>
+        ///     实例化类
+        /// </summary>
+        /// <typeparam name="T">类型</typeparam>
+        /// <returns>返回的实例化</returns>
+        public static T Instance<T>()
+        {
+            return _container.GetInstance<T>();
         }
     }
 }

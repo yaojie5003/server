@@ -18,7 +18,9 @@ namespace AdministrationServer.Controllers
         /// 地级市、地区、自治州、盟
         /// </summary>
         /// <param name="cityRepository">仓储接口</param>
-        public CityController(ICityRepository cityRepository) { _cityRepository = cityRepository; }
+        public CityController()
+        {
+            _cityRepository = LightInjectConfiguration.Instance<ICityRepository>();  }
 
         /// <summary>
         /// 地级市、地区、自治州、盟分页查询

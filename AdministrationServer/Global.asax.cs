@@ -1,13 +1,4 @@
-﻿using AdministrationServer.Controllers;
-using AdministrationServer.Data;
-using AdministrationServer.EntityFrameworkCore;
-using LightInject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
-using System.Web.Routing;
+﻿using System.Web.Http;
 
 namespace AdministrationServer
 {
@@ -15,9 +6,9 @@ namespace AdministrationServer
     {
         protected void Application_Start()
         {
-           
-            GlobalConfiguration.Configure(WebApiConfig.Register);
             LightInjectConfiguration.Register(GlobalConfiguration.Configuration);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+          
             
         }
     }
