@@ -20,9 +20,6 @@ namespace AdministrationServer
             //_container = new ServiceContainer();
             _container.RegisterApiControllers();
            
-            
-            //_container.EnablePerWebRequestScope();
-            // _container.Register<ServerDbContext>();
             _container.Register<ADMDbcontext>();
             _container.Register<ICityRepository, CityRepository<ADMDbcontext>>();
             _container.Register<IProvinceRepository, ProvinceRepository<ADMDbcontext>>();

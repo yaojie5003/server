@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -22,9 +21,9 @@ namespace AdministrationServer.Controllers
         /// 初始化
         /// </summary>
         /// <param name="expressRepository"></param>
-        public ExpressController()
+        public ExpressController(IExpressRepository express)
         {
-            _express = LightInjectConfiguration.Instance<IExpressRepository>();
+            _express = express;
         }
         /// <summary>
         /// 查询列表

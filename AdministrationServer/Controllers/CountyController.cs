@@ -17,9 +17,9 @@ namespace AdministrationServer.Controllers
         /// 市辖区、县级市、县
         /// </summary>
         /// <param name="countyRepository">市辖区、县级市、县接口</param>
-        public CountyController()
+        public CountyController(ICountyRepository countyRepository)
         {
-            _countyRepository = LightInjectConfiguration.Instance<ICountyRepository>();  }
+            _countyRepository = countyRepository;  }
 
         /// <summary>
         /// 分页市辖区、县级市、县查询

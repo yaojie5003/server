@@ -18,7 +18,7 @@ namespace AdministrationServer.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
            
-            optionsBuilder.UseSqlite($"Data Source={ Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data\\dt.db")}");
+            optionsBuilder.UseSqlite($"Data Source={ Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data/dt.db")}");
         }
     }
 }

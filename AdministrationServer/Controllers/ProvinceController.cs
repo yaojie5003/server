@@ -3,6 +3,7 @@ using AdministrationServer.EntityFrameworkCore;
 using Swashbuckle.Swagger.Annotations;
 using System.Collections.Generic;
 using System.Web.Http;
+using AdministrationServer.Data;
 
 namespace AdministrationServer.Controllers
 {
@@ -17,9 +18,9 @@ namespace AdministrationServer.Controllers
         /// 省、自治区、直辖市
         /// </summary>
         /// <param name="repository">省、自治区、直辖市接口</param>
-        public ProvinceController()
+        public ProvinceController(IProvinceRepository provinceRepository )
         {
-            _provinceRepository = LightInjectConfiguration.Instance<IProvinceRepository>();
+            _provinceRepository = provinceRepository;
         }
         /// <summary>
         /// 获取省份列表
