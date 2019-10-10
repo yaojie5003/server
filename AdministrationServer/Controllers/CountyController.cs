@@ -33,6 +33,11 @@ namespace AdministrationServer.Controllers
         public IHttpActionResult Query(int cityId, string countyName = "", int pageIndex = 1, int pageSize = 10)
         {
             if (string.IsNullOrEmpty(countyName)&& cityId<1) { return NotFound(); }
+
+            if (string.IsNullOrEmpty(countyName))
+            {
+                countyName = "";
+            }
             if (pageIndex < 1) { return BadRequest("页码不能小于1！"); }
             if (pageSize < 1) { return BadRequest("每页条数不能小于1！"); }
             return Json(_countyRepository.GetCountyPage(cityId, countyName, pageIndex, pageSize));

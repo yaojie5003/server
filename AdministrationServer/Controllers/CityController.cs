@@ -33,7 +33,12 @@ namespace AdministrationServer.Controllers
         [HttpGet, Route("query"), SwaggerResponse(200, "地级市、地区、自治州、盟列表", typeof(List<City>))]
         public IHttpActionResult Query(int provinceId = 0, string cityName = "", int pageIndex = 1, int pageSize = 10)
         {
-            if (string.IsNullOrEmpty(cityName) && provinceId < 1) { return NotFound(); }
+            //if (string.IsNullOrEmpty(cityName) && provinceId < 1) { return NotFound(); }
+            if (string.IsNullOrEmpty(cityName))
+            {
+                cityName = "";
+            }
+
             if (pageIndex < 1) { return BadRequest("页码不能小于1！"); }
             if (pageSize < 1) { return BadRequest("每页条数不能小于1！"); }
             return  Json( _cityRepository.GetCityPage(provinceId, cityName, pageIndex, pageSize));           

@@ -88,13 +88,11 @@ namespace AdministrationServer.EntityFrameworkCore
             if (pageSize < 1) { throw new System.ArgumentException("每页条数不能小于1"); }
             if (string.IsNullOrEmpty(name)&& provinceId==0)
             {
-                return new List<City>();
+                return _entity.OrderBy(a => a.Id).Skip(pageSize * (pageIndex - 1)).Take(pageSize); ;
             }
             ThrowIfDisposed();
-            IEnumerable<City> result;
-            if (provinceId == 0) { result = _entity.Where(a => a.Abbreviation.Contains(name)); }
-            else { result = _entity.Where(a => a.ProvinceId == provinceId && a.Abbreviation.Contains(name)); }
-            return  result.OrderBy(a => a.Code).Skip(pageSize * (pageIndex - 1)).Take(pageSize);
+            IEnumerable<City> result = provinceId == 0 ? _entity.Where(a => a.Abbreviation.Contains(name)) : _entity.Where(a => a.ProvinceId == provinceId && a.Abbreviation.Contains(name));
+            return  result.OrderBy(a => a.Id).Skip(pageSize * (pageIndex - 1)).Take(pageSize);
 
         }
     }
