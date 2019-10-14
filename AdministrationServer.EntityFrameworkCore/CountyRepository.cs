@@ -22,7 +22,7 @@ namespace AdministrationServer.EntityFrameworkCore
         /// <summary>
         /// 获取地级市、地区、自治州、盟数据对象
         /// </summary>
-        private DbSet<City> _city { get { return _context.Set<City>(); } }
+        private DbSet<City> _city => _context.Set<City>();
 
         /// <summary>
         ///  通过地级市、地区、自治州、盟Id查询市辖区、县级市、县…
