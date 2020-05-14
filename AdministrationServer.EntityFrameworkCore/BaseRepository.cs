@@ -70,7 +70,7 @@ namespace AdministrationServer.EntityFrameworkCore
             if (pageIndex<1) { throw new System.ArgumentException("页码不能小于1！"); }
             if(pageSize<1){ throw new System.ArgumentException("每页条数不能小于1"); }
             ThrowIfDisposed();
-            return await _entity.Skip(pageIndex * pageSize).Take(pageSize).ToListAsync();
+            return await _entity.Skip((pageIndex-1) * pageSize).Take(pageSize).ToListAsync();
         }
         /// <summary>
         /// 通过id获取实体
