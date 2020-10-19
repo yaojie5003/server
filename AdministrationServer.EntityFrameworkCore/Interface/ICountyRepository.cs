@@ -36,5 +36,11 @@ namespace AdministrationServer.EntityFrameworkCore
         /// <param name="code">辖区、县级市、县…行政区代码</param>
         /// <returns>市辖区、县级市、县…</returns>
         County GetCountyByCode(string code);
+        /// <summary>
+        /// 通过地市辖区、县级市、县名查询市辖区、县级市、县
+        /// </summary>
+        /// <param name="cityName">市辖区、县级市、县名</param>
+        /// <returns>市辖区、县级市、县…列表</returns>
+        IEnumerable<County> GetCountyByName(string name);
     }
 }

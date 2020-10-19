@@ -77,5 +77,16 @@ namespace AdministrationServer.Controllers
             if (string.IsNullOrEmpty(cityName)) { return BadRequest("地级市、地区、自治州、盟名称不能为空！"); }
             return Json(_countyRepository.GetCountyByCityName(cityName));
         }
+        /// <summary>
+        /// 根据市辖区、县级市、县名称查询市辖区、县级市、县
+        /// </summary>
+        /// <param name="name">市辖区、县级市、县名称</param>
+        /// <returns>市辖区、县级市、县列表</returns>
+        [HttpGet, Route("queryByName"), Swashbuckle.Swagger.Annotations.SwaggerResponse(200, "市辖区、县级市、县列表", typeof(List<County>))]
+        public IHttpActionResult QueryByName(string name)
+        {
+            if (string.IsNullOrEmpty(name)) { return BadRequest("市辖区、县级市、县名称不能为空！"); }
+            return Json(_countyRepository.GetCountyByName(name));
+        }
     }
 }

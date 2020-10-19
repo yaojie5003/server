@@ -32,5 +32,17 @@ namespace AdministrationServer.Controllers
             var result =await _provinceRepository.GetList();
             return Json(result);
         }
+        /// <summary>
+        /// 通过省、自治区、直辖市的名称获取省、自治区、直辖市
+        /// </summary>
+        /// <param name="name">省、自治区、直辖市的名称</param>
+        /// <returns>省、自治区、直辖市列表</returns>
+        [HttpGet, Route("queryByName"), SwaggerResponse(200, "省、自治区、直辖市", typeof(List<City>))]
+        public IHttpActionResult QueryByName(string name)
+        {
+            if (string.IsNullOrEmpty(name)) { return BadRequest("省、自治区、直辖市名称不能为空！"); }
+            var result = _provinceRepository.GetProvinceByName(name);
+            return Json(result);
+        }
     }
 }

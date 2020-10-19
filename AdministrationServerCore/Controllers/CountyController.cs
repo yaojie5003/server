@@ -75,5 +75,16 @@ namespace AdministrationServerCore.Controllers
             if (string.IsNullOrEmpty(cityName)) { return BadRequest("地级市、地区、自治州、盟名称不能为空！"); }
             return Ok(_countyRepository.GetCountyByCityName(cityName));
         }
+        /// <summary>
+        /// 根据市辖区、县级市、县名称查询市辖区、县级市、县
+        /// </summary>
+        /// <param name="name">市辖区、县级市、县名称</param>
+        /// <returns>市辖区、县级市、县列表</returns>
+        [HttpGet, Route("queryByName"), ProducesResponseType(typeof(List<County>), 200)]
+        public IActionResult QueryByName(string name)
+        {
+            if (string.IsNullOrEmpty(name)) { return BadRequest("市辖区、县级市、县名称不能为空！"); }
+            return Ok(_countyRepository.GetCountyByName(name));
+        }
     }
 }

@@ -24,6 +24,16 @@ namespace AdministrationServer.EntityFrameworkCore
         /// </summary>
         /// <returns>省、自治区、直辖市列表</returns>
         public Task<IEnumerable<Province>> GetList() { return Task.Run(() => _entity.AsEnumerable()); }
-
+        /// <summary>
+        /// 通过省、自治区、直辖市名称获取省、自治区、直辖市
+        /// </summary>
+        /// <param name="name">省、自治区、直辖市名称</param>
+        /// <returns>省、自治区、直辖市列表</returns>
+        public IEnumerable<Province> GetProvinceByName(string name)
+        {
+            if (string.IsNullOrEmpty(name)) { throw new System.ArgumentNullException("省份名不能为空！"); }
+            ThrowIfDisposed();
+            return _entity.Where(a => a.Abbreviation.Contains(name));         
+        }
     }
 }

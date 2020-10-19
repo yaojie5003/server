@@ -61,6 +61,17 @@ namespace AdministrationServer.EntityFrameworkCore
             code = $"{code.Substring(0, 6)}";
             return _entity.FirstOrDefault(a => a.Code == code);
         }
+        /// <summary>
+        /// 通过地市辖区、县级市、县名查询市辖区、县级市、县
+        /// </summary>
+        /// <param name="name">市辖区、县级市、县名</param>
+        /// <returns>市辖区、县级市、县…列表</returns>
+        public IEnumerable<County> GetCountyByName(string name)
+        {
+            if (string.IsNullOrEmpty(name)) { throw new System.ArgumentNullException("区县名不能为空！"); }
+            ThrowIfDisposed();
+            return _entity.Where(a => a.Abbreviation.Contains(name));
+        }
 
         /// <summary>
         /// 分页查询市辖区、县级市、县…
